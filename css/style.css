@@ -1,0 +1,96 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext';
+* {
+  box-sizing: border-box;
+}
+.inline-form {
+  display: flex;
+}
+.inline-form input {
+  min-width: 1px;
+  flex: 1;
+}
+.font {
+  font-family: 'Roboto', sans-serif;
+}
+button {
+  background-color: #cccccc;
+  border: 0;
+}
+input {
+  padding-left: 5px;
+}
+input,
+button {
+  height: 28px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+.hidden {
+  display: none !important;
+}
+html,
+body {
+  height: 100%;
+  margin: 0 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+main {
+  margin: 0 auto;
+  padding: 5px 25px;
+  max-width: 500px;
+  background-color: #e6e6e6;
+  color: black;
+  font-size: 18px;
+}
+main fieldset {
+  padding: 0;
+  border: 0;
+}
+main h1,
+main .platform-selector {
+  text-align: center;
+}
+main h2 {
+  margin: 25px 0 -5px 0;
+}
+main .desktop-form input,
+main .mobile-form input {
+  width: 100%;
+}
+main .desktop-form tr:nth-child(2n+1) input,
+main .mobile-form tr:nth-child(2n+1) input {
+  width: 90%;
+}
+main .desktop-form .start-div,
+main .mobile-form .start-div {
+  margin-top: 25px;
+  text-align: center;
+}
+main table {
+  width: 100%;
+  border-spacing: 10px;
+}
+main table thead th.no1 {
+  width: 30%;
+}
+main table thead th.no2 {
+  width: 70%;
+}
+main table td {
+  background: #cccccc;
+  padding: 10px;
+}
+main table td.in-progress {
+  background: #94b2d1;
+}
+main table td.in-progress::after {
+  content: 'in progress...';
+  color: #808080;
+}
+main table td.failed {
+  background: #e08585;
+}
+main table td.completed {
+  background: #8cd98c;
+}

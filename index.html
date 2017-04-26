@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Hash Benchmarks</title>
+  <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+  <main>
+  <h1>Crypto Hash Benchmarks</h1>
+  <fieldset class="platform-selector">
+      <button id="desktop-button">Desktop</button>
+      <button id="mobile-button">Mobile</button>
+  </fieldset>
+  <fieldset class="desktop-form hidden">
+    <h2>Desktop</h2>
+    <table>
+      <thead>
+        <tr>
+          <th class="no1"></th>
+          <th class="no2"></th>
+        </tr>
+      </thead>
+      <tr>
+        <td>ID:</td>
+        <td class="bench-id"></td>      
+      </tr>
+      <tr>
+        <td>Processor:</td>
+        <td><input id="processor-input"/></td>      
+      </tr>
+      <tr>
+        <td>Memory:</td>
+        <td><input type="number" id="memory-input"/><label>GB</label></td>
+      </tr>
+    </table>
+    <div class="start-div"><button>Start</button></div>
+  </fieldset>
+  <fieldset class="mobile-form hidden">
+    <h2>Mobile</h2>
+       <table>
+      <thead>
+        <tr>
+          <th class="no1"></th>
+          <th class="no2"></th>
+        </tr>
+      </thead>
+      <tr>
+        <td>ID:</td>
+        <td class="bench-id"></td>      
+      </tr>
+      <tr>
+        <td>Name/Type:</td>
+        <td><input id="mobile-input"/></td>
+      </tr>
+    </table>
+   <div class="start-div"><button>Start</button></div>
+  </fieldset>
+  
+  <div>
+    <h2>Web Crypto API Benchmarks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th class="no1"></th>
+          <th class="no2"></th>
+        </tr>
+      </thead>
+      <tr>
+        <td>SHA1</td>
+        <td id="native-sha1"></td>
+      </tr>
+      <tr>
+        <td>SHA256</td>
+        <td id="native-sha256"></td>
+      </tr>
+      <tr>
+        <td>SHA512</td>
+        <td id="native-sha512"></td>
+      </tr>
+      <tr>
+        <td>PBKDF2</td>
+        <td id="native-pbkdf2"></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div>
+    <h2>forge Benchmarks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th class="no1"></th>
+          <th class="no2"></th>
+        </tr>
+      </thead>
+      <tr>
+        <td>MD5</td>
+        <td id="forge-md5"></td>
+      </tr>
+      <tr>
+        <td>SHA1</td>
+        <td id="forge-sha1"></td>
+      </tr>
+      <tr>
+        <td>SHA256</td>
+        <td id="forge-sha256"></td>
+      </tr>
+      <tr>
+        <td>SHA512</td>
+        <td id="forge-sha512"></td>
+      </tr>
+      <tr>
+        <td>PBKDF2</td>
+        <td id="forge-pbkdf2"></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div>
+    <h2>browserify-crypto Benchmarks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th class="no1"></th>
+          <th class="no2"></th>
+        </tr>
+      </thead>
+      <tr>
+        <td>MD5</td>
+        <td id="browserify-md5"></td>
+      </tr>
+      <tr>
+        <td>SHA1</td>
+        <td id="browserify-sha1"></td>
+      </tr>
+      <tr>
+        <td>SHA256</td>
+        <td id="browserify-sha256"></td>
+      </tr>
+      <tr>
+        <td>SHA512</td>
+        <td id="browserify-sha512"></td>
+      </tr>
+      <tr>
+        <td>PBKDF2</td>
+        <td id="browserify-pbkdf2"></td>
+      </tr>
+      <tr>
+        <td>PBKDF2 async</td>
+        <td id="browserify-async-pbkdf2"></td>
+      </tr>
+    </table>
+  </div>
+  
+    <div>
+    <h2>asmCrypto Benchmarks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th class="no1"></th>
+          <th class="no2"></th>
+        </tr>
+      </thead>
+      <tr>
+        <td>SHA1</td>
+        <td id="asmCrypto-sha1"></td>
+      </tr>
+      <tr>
+        <td>SHA256</td>
+        <td id="asmCrypto-sha256"></td>
+      </tr>
+      <tr>
+        <td>SHA512</td>
+        <td id="asmCrypto-sha512"></td>
+      </tr>
+      <tr>
+        <td>PBKDF2</td>
+        <td id="asmCrypto-pbkdf2"></td>
+      </tr>
+    </table>
+  </div>
+  
+      <div>
+    <h2>argon2-browser Benchmarks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th class="no1"></th>
+          <th class="no2"></th>
+        </tr>
+      </thead>
+      <tr>
+        <td>Argon2 asm.js</td>
+        <td id="argon2-asm"></td>
+      </tr>
+      <tr>
+        <td>Argon2 PNaCl</td>
+        <td id="argon2-pnacl"></td>
+      </tr>
+      <tr>
+        <td>Argon2 WebAssembly</td>
+        <td id="argon2-wasm"></td>
+      </tr>
+    </table>
+  </div>
+
+</main>
+<div id="pnaclListener"></div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/benchmark/2.1.4/benchmark.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.4/platform.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js'></script>
+<script src='https://unpkg.com/node-forge@0.7.1/dist/forge.min.js'></script>
+<script src='https://wzrd.in/standalone/md5.js@latest'></script>
+<script src='https://wzrd.in/standalone/sha.js@latest'></script>
+<script src='https://wzrd.in/standalone/pbkdf2@latest'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/asmCrypto/0.0.11/asmcrypto.js'></script>
+<script src='https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js'></script>
+<script src='https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js'></script>
+<script src="js/index.js"></script>
+</body>
+</html>
