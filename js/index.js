@@ -337,21 +337,21 @@ var browserifyMD5 = createBenchmark("browserify-md5", browserify_md5);
 var browserifySHA1 = createBenchmark("browserify-sha1", browserify_sha1);
 var browserifySHA256 = createBenchmark("browserify-sha256", browserify_sha256);
 var browserifySHA512 = createBenchmark("browserify-sha512", browserify_sha512);
-var browserifyPBKDF2 = createBenchmark("browserify-pbkdf2", browserify_pbkdf2);
-var browserifyPBKDF2Async = createBenchmark(
-  "browserify-async-pbkdf2",
-  browserify_pbkdf2Async,
-  true
-);
+//var browserifyPBKDF2 = createBenchmark("browserify-pbkdf2", browserify_pbkdf2);
+//var browserifyPBKDF2Async = createBenchmark(
+//  "browserify-async-pbkdf2",
+//  browserify_pbkdf2Async,
+//  true
+//);
 
 function runBrowserifyBenchmarks() {
   return asyncRun
     .call(browserifyMD5)
     .then(asyncRun.bind(browserifySHA1))
     .then(asyncRun.bind(browserifySHA256))
-    .then(asyncRun.bind(browserifySHA512))
-    .then(asyncRun.bind(browserifyPBKDF2))
-    .then(asyncRun.bind(browserifyPBKDF2Async));
+    .then(asyncRun.bind(browserifySHA512));
+   // .then(asyncRun.bind(browserifyPBKDF2))
+   // .then(asyncRun.bind(browserifyPBKDF2Async));
 }
 
 //------------------------------------------------------------------
